@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Molly Tinsley</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink-deep: #c77b8a;
+      --pink-mid: #d9a5b0;
+      --pink-soft: #f0dfe4;
+      --pink-dust: #e8d4da;
+      --cream: #faf7f8;
+      --charcoal: #2d2527;
+      --text-muted: #5c4d50;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 400;
+      color: var(--charcoal);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: url('assets/1.jpg') center center / cover no-repeat;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(45, 37, 39, 0.6) 0%, rgba(45, 37, 39, 0.2) 40%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem 4rem;
+      max-width: 900px;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 600;
+      color: white;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-tagline {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 300;
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 0.5rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* Sections */
+    section {
+      padding: 2rem 2rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .short-bio p,
+    .long-bio p {
+      color: var(--charcoal);
+      font-weight: 400;
+      line-height: 1.75;
+    }
+
+    .long-bio {
+      padding-top: 1rem;
+    }
+
+    .long-bio p {
+      font-size: 1.2rem;
+    }
+
+    .long-bio p + p {
+      margin-top: 1rem;
+    }
+
+    .placeholder {
+      color: var(--pink-mid);
+      font-weight: 300;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Contact - integrated, no box */
+    .contact {
+      padding: 2rem 2rem 1rem;
+      border-top: 2px solid var(--pink-mid);
+    }
+
+    .contact-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .contact h2 {
+      display: none;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      gap: 0.25rem 0.25rem;
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+
+    .contact-links a {
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .contact-links a:hover {
+      color: var(--pink-deep);
+    }
+
+    .contact-links span {
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .contact-links a[href^="mailto"] {
+      font-size: 0.9rem;
+    }
+
+
+    /* Newsletter signup */
+    .newsletter {
+      padding: 2rem 2rem;
+      border-top: 2px solid var(--pink-mid);
+      text-align: center;
+    }
+
+    .newsletter-inner {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .newsletter p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.6rem 1rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem;
+      border: 1px solid var(--pink-dust);
+      background: white;
+      color: var(--charcoal);
+    }
+
+    .newsletter-form input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--pink-mid);
+    }
+
+    .newsletter-form button {
+      padding: 0.6rem 1.25rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      background: var(--charcoal);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--pink-deep);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem 2rem 0.5rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      color: var(--charcoal);
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover {
+      color: var(--pink-deep);
+    }
+
+    .social-links svg {
+      width: 24px;
+      height: 24px;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <h1 class="hero-name">Molly Tinsley</h1>
+      <p class="hero-tagline">Country Artist</p>
+    </div>
+  </header>
+
+  <nav class="social-links" aria-label="Social links">
+    <a href="https://www.instagram.com/mollytinsleymusic/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <a href="https://www.tiktok.com/@mollytinsleymusic" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+      </svg>
+    </a>
+  </nav>
+
+  <section class="long-bio">
+    <h2>About</h2>
+    <p>
+      Molly Tinsley is a 19-year-old country singer-songwriter known for emotionally honest storytelling and melodies that linger. Originally from Menlo Park, California, she discovered her love for music at an early age, turning a lifelong passion into her calling. <br><br>
+
+Before fully committing to music, Molly played Division I soccer at Loyola Marymount University, where she developed the discipline, resilience, and drive that now fuel her artistry. The youngest of seven in a close-knit family, she draws deeply from real life, faith, and personal experience when writing. <br><br>
+
+Inspired by artists like Megan Moroney, Taylor Swift, Chris Stapleton, and Ella Langley, Molly creates music that is intentional, heartfelt, and unmistakably her own. Now focused on writing and recording original material, she decided to move from Los Angeles to Nashville to chase her dream in the heart of country music. <br><br>
+
+    </p>
+  </section>
+
+  <section class="newsletter">
+    <div class="newsletter-inner">
+      <p>Stay in the loop — get notified about shows, music releases, and more.</p>
+      <!-- Netlify Forms: works when deployed to Netlify. For Vercel/other hosts, use Formspree: action="https://formspree.io/f/YOUR_ID" and remove data-netlify & netlify-honeypot -->
+      <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <p class="visually-hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <input type="email" name="email" placeholder="Your email" required aria-label="Email address" />
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="contact-inner">
+      <div class="contact-links">
+        <span class="contact-pair">Booking: <a href="mailto:Charlotteavenuepictures@gmail.com">Charlotteavenuepictures@gmail.com</a></span>
+        <span>·</span>
+        <span class="contact-pair">Contact: <a href="mailto:mollytinsleymusic@gmail.com">mollytinsleymusic@gmail.com</a></span>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
